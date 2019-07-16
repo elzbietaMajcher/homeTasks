@@ -53,7 +53,7 @@ public class InputData {
 
             List<String> parsedText = parsText(input);
 
-            Date temp = new SimpleDateFormat("yyyy/MM/dd").parse(clean4(parsedText.get(1)));
+            Date temp = parseDateText(parsedText.get(1));
 
             inputData = new InputData(temp, clean(parsedText.get(2)), clean(parsedText.get(3)), clean(parsedText.get(4)), clean(parsedText.get(5)), clean(parsedText.get(6)), clean2(parsedText.get(7)), clean3(parsedText.get(8)));
 
@@ -66,6 +66,40 @@ public class InputData {
 
 
         return inputData;
+    }
+
+    /**
+     * parse txt to convert like
+     *     2017/10/10</th>
+     * 10102017T0000</
+     * 10-10-2017</th>
+     * @param s
+     * @return
+     * @throws ParseException
+     */
+    private static Date parseDateText(String s) {
+
+        Date date =null;
+        try {
+            try { //2017/10/10
+                if (date == null)
+                    date = new SimpleDateFormat("yyyy/MM/dd").parse(clean4(s));
+            } finally {
+            }
+
+            try { // 10102017T0000
+                if (date == null)
+                    date = new SimpleDateFormat("ddMMyyyy7T0000").parse(clean4(s));
+            } finally {
+            }
+
+            try { //10-10-2017
+                if (date == null)
+                    date = new SimpleDateFormat("dd-MM-yyyy").parse(clean4(s));
+            } finally {
+            }
+        }catch (Exception ec){}
+        return date ;
     }
 
     public static String clean4(String s) {

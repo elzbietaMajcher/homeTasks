@@ -45,7 +45,7 @@ public class Task1Test {
 
         System.out.println(collect.size());
 //
-//        collect.forEach(System.out::println);
+     collect.forEach(System.out::println);
 
 
     }
