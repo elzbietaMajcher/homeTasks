@@ -47,11 +47,12 @@ public class InputData {
      * @param input is a line from the text from the html
      * @return an object with parsed data or null
      */
-    public static InputData fromText(String input)  {
+    public static InputData fromTextToParsed(String input)  {
         InputData inputData = null;
         try {
 
             List<String> parsedText = parsText(input);
+            System.out.println("*****" + input);
 
             Date temp = new SimpleDateFormat("yyyy/MM/dd").parse(clean4(parsedText.get(1)));
 
@@ -67,7 +68,7 @@ public class InputData {
                 .replace("</th>", "")
                 .trim();
     }
-
+// TODO rename method names
 
     private static String clean3(String s) {
         return s.replace("class=\"titulo\" scope=\"col\">", "")
@@ -80,13 +81,14 @@ public class InputData {
                 .replace("</sup></th>", "")
                 .trim();
     }
+
     private static String clean(String s) {
         return s.replace("class=\"titulo\" scope=\"col\">", "")
                 .replace("</th>", "")
                 .trim();
     }
 
-    public static List<String> parsText(String input) {
+    private static List<String> parsText(String input) {
         return Arrays.asList(input.split("<th"));
     }
 

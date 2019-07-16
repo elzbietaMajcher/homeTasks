@@ -19,17 +19,16 @@ public class Task1 {
 
 
 
-    public static List<String> readFile(Path path, Charset charset) {
+    public static List<String> readFile(Path path, Charset charset) throws IOException {
         List<String> lines = new ArrayList<>();
-        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+       BufferedReader reader = Files.newBufferedReader(path, charset);
             String line;
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
+                System.out.println(line.toString());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        }
+
+
         return lines;
 
     }
