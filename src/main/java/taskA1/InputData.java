@@ -52,14 +52,19 @@ public class InputData {
         try {
 
             List<String> parsedText = parsText(input);
-            System.out.println("*****" + input);
 
             Date temp = new SimpleDateFormat("yyyy/MM/dd").parse(clean4(parsedText.get(1)));
 
             inputData = new InputData(temp, clean(parsedText.get(2)), clean(parsedText.get(3)), clean(parsedText.get(4)), clean(parsedText.get(5)), clean(parsedText.get(6)), clean2(parsedText.get(7)), clean3(parsedText.get(8)));
+
+            System.out.println("## v" + input + " --> " + inputData+ "##");
         } catch (Exception e){
-            System.err.println(e.getMessage());
+//            System.err.println(e.getMessage());
+            System.out.println("## e" + input + " --> " + inputData + "##");
         }
+
+
+
         return inputData;
     }
 

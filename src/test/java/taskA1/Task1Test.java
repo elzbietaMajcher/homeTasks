@@ -36,12 +36,16 @@ public class Task1Test {
 //        input.forEach(System.out::println);
 
 //
-        List<InputData> collect = input.stream()
+        List<InputData> collect = input
+                .stream()
                 .map(InputData::fromTextToParsed)
-                //.filter(o -> o != null)
+                .filter(i -> i !=null)
                 .collect(Collectors.toList());
+
+
+        System.out.println(collect.size());
 //
-        collect.forEach(System.out::println);
+//        collect.forEach(System.out::println);
 
 
     }

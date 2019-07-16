@@ -25,7 +25,7 @@ public class Task1 {
             String line;
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
-                System.out.println(line.toString());
+//                System.out.println(line.toString());
             }
 
 
